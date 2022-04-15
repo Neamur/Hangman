@@ -10,3 +10,6 @@ Coded my own cli based hangman game
 ## Features to be added
 - more words
 - clues for the words. (gonna take a long while, any contribution is appriciated :) )
+
+### Contribution
+- any contribution is highly appriciated :)
