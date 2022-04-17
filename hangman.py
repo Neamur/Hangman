@@ -5,7 +5,7 @@ import sys
 
 # 20 animal names
 
-words = [
+animals_list = [
     "cat",
     "dog",
     "penguin",
@@ -16,7 +16,7 @@ words = [
     "chicken",
     "dolphin",
     "lion",
-    "Elephant",
+    "elephant",
     "horse",
     "pelican",
     "beetle",
@@ -29,13 +29,17 @@ words = [
 ]
 
 
-word = words[random.randrange(len(words))]
-index = []
-wrong = 0
+random_animal = animals_list[random.randrange(len(animals_list))]
 
-l = len(word)
-dash = "".join("-" for _ in range(l))
-hangman = [
+temp = []
+
+wrong_guesses = 0
+
+animal_name_len = len(random_animal)
+
+dash = "".join("-" for _ in range(animal_name_len))
+
+hangman_stages = [
     """
  +---+
      |
@@ -95,32 +99,45 @@ hangman = [
     """""",
 ]
 while True:
-    print("The word is a ", l, "letter word")
+    print("The word is a ", animal_name_len, "letter word")
+
     print(dash)
-    for i in range(len(word)):
-        guess = input("guess a letter: ")
-        if str(guess) in word:
-            ind = word.index(guess)
 
-            if word.count(guess) == 1:
-                dash = dash[:ind] + word[ind] + dash[ind + 1 :]
+    for i in range(len(random_animal)):
+        guess = input("Guess a letter: ")
+
+        if str(guess) in random_animal:
+            ind = random_animal.index(guess)
+
+            if random_animal.count(guess) == 1:
+                dash = dash[:ind] + random_animal[ind] + dash[ind + 1 :]
+
                 print(dash)
 
-            if word.count(guess) > 1:
-                index.extend(i for i in range(len(word)) if word[i] == guess)
-                for j in index:
-                    if index[0] == 0:
+            if random_animal.count(guess) > 1:
+                temp.extend(
+                    i for i in range(len(random_animal)) if random_animal[i] == guess
+                )
+
+                for j in temp:
+                    if temp[0] == 0:
                         dash = dash.replace(dash[0], guess, 1)
-                    dash = dash[:j] + word[ind] + dash[j + 1 :]
-                index.clear()
+
+                    dash = dash[:j] + random_animal[ind] + dash[j + 1 :]
+
+                temp.clear()
+
                 print(dash)
 
-        if dash == word:
+        if dash == random_animal:
             sys.exit("Whatever")
 
-        if guess not in word:
-            print(hangman[wrong])
-            wrong += 1
-            if len(hangman) == wrong + 1:
-                print(word)
+        if guess not in random_animal:
+            print(hangman_stages[wrong_guesses])
+
+            wrong_guesses += 1
+
+            if len(hangman_stages) == wrong_guesses + 1:
+                print(random_animal)
+
                 sys.exit("You are trash bruh")
