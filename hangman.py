@@ -98,8 +98,9 @@ hangman_stages = [
 ======""",
     """""",
 ]
+
 while True:
-    print("The word is a ", animal_name_len, "letter word")
+    print(f"The word is a {animal_name_len} letter word, and is a name of an animal")
 
     print(dash)
 
@@ -130,7 +131,7 @@ while True:
                 print(dash)
 
         if dash == random_animal:
-            sys.exit("Whatever")
+            sys.exit("Whatever, you win.")
 
         if guess not in random_animal:
             print(hangman_stages[wrong_guesses])
@@ -140,4 +141,4 @@ while True:
             if len(hangman_stages) == wrong_guesses + 1:
                 print(random_animal)
 
-                sys.exit("You are trash bruh")
+                sys.exit("You are trash bruh.")
