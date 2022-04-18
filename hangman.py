@@ -1,7 +1,7 @@
-import random
-import sys
-import string
 import os
+import random
+import string
+import sys
 
 animals_list = [line.strip() for line in open("animals.txt", "r")]
 
