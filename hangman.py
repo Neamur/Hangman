@@ -1,9 +1,20 @@
+"""
+Hangman - A simple hangman game made in Python 3 based on animal names
+Contributors: @Neamur (ItsyBitsy)
+              @savioxavier (Savio Xavier)
+
+Still prone to bugs, proceed with caution
+"""
+
 import os
 import random
 import string
 import sys
 
-animals_list = [line.strip() for line in open("animals.txt", "r")]
+# flake8: noqa: E501 E203
+# pylint: disable=invalid-name, consider-using-with
+
+animals_list = [line.strip() for line in open("animals.txt", "r", encoding="utf-8")]
 
 random_animal = animals_list[random.randrange(len(animals_list))]
 
@@ -16,7 +27,7 @@ animal_name_len = len(random_animal)
 dash = "".join("-" for _ in range(animal_name_len))
 
 hangman_stages = [
-    open(f"assets/{file}", "r").read()
+    open(f"assets/{file}", "r", encoding="utf-8").read()
     for file in os.listdir("assets/")
     if file.endswith(".txt")
 ]
