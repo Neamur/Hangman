@@ -1,33 +1,9 @@
-# hangman
 import random
 import sys
 import string
+import os
 
-# 20 animal names
-
-animals_list = [
-    "cat",
-    "dog",
-    "penguin",
-    "alligator",
-    "camel",
-    "goat",
-    "puffin",
-    "chicken",
-    "dolphin",
-    "lion",
-    "elephant",
-    "horse",
-    "pelican",
-    "beetle",
-    "tiger",
-    "spider",
-    "snake",
-    "shark",
-    "whale",
-    "monkey",
-]
-
+animals_list = [line.strip() for line in open("animals.txt", "r")]
 
 random_animal = animals_list[random.randrange(len(animals_list))]
 
@@ -40,63 +16,9 @@ animal_name_len = len(random_animal)
 dash = "".join("-" for _ in range(animal_name_len))
 
 hangman_stages = [
-    """
- +---+
-     |
-     |
-     |
-     |
-======""",
-    """
- +---+
- |   |
-     |
-     |
-     |
-======""",
-    """
- +---+
- |   |
- 0   |
-     |
-     |
-======""",
-    """
- +---+
- |   |
- 0   |
- |   |
-     |
-======""",
-    """
- +---+
- |   |
- 0   |
-/|   |
-     |
-======""",
-    """
- +---+
- |   |
- 0   |
-/|\  |
-     |
-======""",
-    """
- +---+
- |   |
- 0   |
-/|\  |
-/    |
-======""",
-    """
- +---+
- |   |
- 0   |
-/|\  |
-/ \  |
-======""",
-    """""",
+    open(f"assets/{file}", "r").read()
+    for file in os.listdir("assets/")
+    if file.endswith(".txt")
 ]
 
 allowed_guesses = string.ascii_letters
@@ -141,7 +63,7 @@ while True:
 
         if guess not in random_animal:
             print("Whooops, that's not right. Try again.")
-            print(hangman_stages[wrong_guesses])
+            print(hangman_stages[wrong_guesses + 1])
 
             wrong_guesses += 1
 
