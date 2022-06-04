@@ -25,7 +25,7 @@ wrong_guesses = 0
 
 animal_name_len = len(random_animal)
 
-dash = "".join("_" for _ in range(animal_name_len))
+dash = "".join(f"_" for _ in range(animal_name_len))
 
 hangman_stages = [
     open(f"assets/{file}", "r", encoding="utf-8").read()
@@ -36,7 +36,7 @@ hangman_stages = [
 allowed_guesses = string.ascii_letters
 
 print(
-    f"{MAGENTA}{BOLD}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}"
+    f"{MAGENTA}{BOLD}{UNDERLINE}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}\n"
 )
 
 num_guesses = 1
@@ -80,7 +80,7 @@ while True:
             sys.exit(f"{GREEN}{BOLD}Whatever, you win.{RESET}")
 
         if guess not in random_animal:
-            print(f"{RED}Whooops, that's not right. Try again.{RESET}")
+            print(f"{RED}Whooops, that's not right. Try again.{RESET}\n")
             print(hangman_stages[wrong_guesses + 1])
 
             wrong_guesses += 1

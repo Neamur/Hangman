@@ -7,3 +7,4 @@ CYAN = "\u001b[36m"
 RESET = "\u001b[0m"
 
 BOLD = "\u001b[1m"
+UNDERLINE = "\u001b[4m"
