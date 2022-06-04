@@ -6,6 +6,7 @@ Contributors: @Neamur (ItsyBitsy)
 Still prone to bugs, proceed with caution
 """
 
+from colors import *
 import os
 import random
 import string
@@ -24,7 +25,7 @@ wrong_guesses = 0
 
 animal_name_len = len(random_animal)
 
-dash = "".join("-" for _ in range(animal_name_len))
+dash = "".join("_" for _ in range(animal_name_len))
 
 hangman_stages = [
     open(f"assets/{file}", "r", encoding="utf-8").read()
@@ -34,16 +35,19 @@ hangman_stages = [
 
 allowed_guesses = string.ascii_letters
 
-print(f"The word is a {animal_name_len} letter word, and is the name of an animal")
+print(
+    f"{MAGENTA}{BOLD}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}"
+)
+
 
 while True:
     print(dash)
 
     for i in range(len(random_animal)):
-        guess = input("Guess a letter: ")
+        guess = input(f"{CYAN}Guess a letter: {RESET}")
 
         if guess not in allowed_guesses:
-            print(f"'{guess}' is not a valid letter. Please try again.")
+            print(f"{RED}'{guess}' is not a valid letter. Please try again.{RESET}")
             continue
 
         if guess.lower() in random_animal:
@@ -70,15 +74,15 @@ while True:
                 print(dash)
 
         if dash == random_animal:
-            sys.exit("Whatever, you win.")
+            sys.exit(f"{GREEN}{BOLD}Whatever, you win.{RESET}")
 
         if guess not in random_animal:
-            print("Whooops, that's not right. Try again.")
+            print(f"{RED}Whooops, that's not right. Try again.{RESET}")
             print(hangman_stages[wrong_guesses + 1])
 
             wrong_guesses += 1
 
             if len(hangman_stages) == wrong_guesses + 1:
-                print(f"The animal was '{random_animal}'.")
+                print(f"The animal was {BLUE}'{random_animal}'{RESET}.")
 
-                sys.exit("You are trash bruh.")
+                sys.exit(f"{RED}{BOLD}You are trash bruh.{RESET}")
