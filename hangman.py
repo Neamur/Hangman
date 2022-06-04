@@ -39,12 +39,13 @@ print(
     f"{MAGENTA}{BOLD}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}"
 )
 
+num_guesses = 1
 
 while True:
     print(dash)
 
     for i in range(len(random_animal)):
-        guess = input(f"{CYAN}Guess a letter: {RESET}")
+        guess = input(f"{CYAN}[Guess {num_guesses}]{RESET} Guess a letter: ")
 
         if guess not in allowed_guesses:
             print(f"{RED}'{guess}' is not a valid letter. Please try again.{RESET}")
@@ -72,6 +73,8 @@ while True:
                 temp.clear()
 
                 print(dash)
+
+        num_guesses += 1
 
         if dash == random_animal:
             sys.exit(f"{GREEN}{BOLD}Whatever, you win.{RESET}")
