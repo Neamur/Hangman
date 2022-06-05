@@ -77,7 +77,8 @@ while True:
         num_guesses += 1
 
         if dash == random_animal:
-            sys.exit(f"{GREEN}{BOLD}Whatever, you win.{RESET}")
+            print(f"{GREEN}{BOLD}Whatever, you win.{RESET}")
+            sys.exit()
 
         if guess not in random_animal:
             print(f"{RED}Whooops, that's not right. Try again.{RESET}\n")
@@ -88,4 +89,5 @@ while True:
             if len(hangman_stages) == wrong_guesses + 1:
                 print(f"The animal was {BLUE}'{random_animal}'{RESET}.")
 
-                sys.exit(f"{RED}{BOLD}You are trash bruh.{RESET}")
+                print(f"{RED}{BOLD}You are trash bruh.{RESET}")
+                sys.exit()
