@@ -6,14 +6,14 @@ Contributors: @Neamur (ItsyBitsy)
 Still prone to bugs, proceed with caution
 """
 
-from colors import *
+# flake8: noqa: E501 E203
+# pylint: disable=invalid-name, consider-using-with, line-too-long, wildcard-import
+
 import os
 import random
 import string
 import sys
-
-# flake8: noqa: E501 E203
-# pylint: disable=invalid-name, consider-using-with
+from colors import *
 
 animals_list = [line.strip() for line in open("animals.txt", "r", encoding="utf-8")]
 
@@ -25,7 +25,7 @@ wrong_guesses = 0
 
 animal_name_len = len(random_animal)
 
-dash = "".join(f"_" for _ in range(animal_name_len))
+dash = "".join("_" for _ in range(animal_name_len))
 
 hangman_stages = [
     open(f"assets/{file}", "r", encoding="utf-8").read()
@@ -36,7 +36,7 @@ hangman_stages = [
 allowed_guesses = string.ascii_letters
 
 print(
-    f"{MAGENTA}{BOLD}{UNDERLINE}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}\n"
+    f"{YELLOW}{BOLD}{UNDERLINE}The word is a {animal_name_len} letter word, and is the name of an animal{RESET}\n"
 )
 
 num_guesses = 1
