@@ -29,6 +29,12 @@ Found the inspiration from a YouTube video talking about the few beginner Python
 
 Thanks to all the people who have helped me with this project!
 
+## Special Mention.
+
+- Sorry Al-yasham (Forgor to add your name!!).
+  Thanks a lot for contributing during the early stages of the development.
+
+
 <a href="https://github.com/Neamur/Hangman/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Neamur/Hangman" />
 </a>
