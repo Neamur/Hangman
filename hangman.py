@@ -29,7 +29,7 @@ dash = "".join("_" for _ in range(animal_name_len))
 
 hangman_stages = [
     open(f"assets/{file}", "r", encoding="utf-8").read()
-    for file in os.listdir("assets/")
+    for file in sorted(os.listdir("assets/"))
     if file.endswith(".txt")
 ]
 
